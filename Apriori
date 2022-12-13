@@ -1,0 +1,28 @@
+import numpy as np
+import collections
+
+#task list
+item_list=[['A','B'],['B','C'],['A','C','D','E'],['A','B','D'],['B','C','E'],['A','B','C']]
+
+#calculating task frequency
+items = [item for sublist in item_list for item in sublist] #flatening list
+frequency = collections.Counter(items)
+keys=frequency.keys()
+# creating item pair 2
+item_pair2=[]
+for i in keys:
+  for j in keys:
+    if not(i==j or [j,i] in item_pair2):
+      item_pair2.append([i,j])
+print(item_pair2)
+
+#frequency of pair
+frequency2 = {}
+for x in item_pair2:
+  count =0
+  for item in item_list:
+    if x[0] in item and x[1] in item:
+      count +=1
+      frequency2[x].append(count)
+      print(item)
+print(frequency2)
